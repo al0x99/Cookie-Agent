@@ -39,12 +39,16 @@ class Cookie_Agent_Admin {
     }
 
     public function cookie_agent_fetch_data($url) {
+        $username = 'alinsfirschi';
+        $password = 'imcAeh23a@';
+    
         $response = wp_remote_post('http://195.32.71.172:3000/scan', array(
             'body' => json_encode(array(
                 'url' => $url
             )),
             'headers' => array(
                 'Content-Type' => 'application/json; charset=utf-8',
+                'Authorization' => 'Basic ' . base64_encode( $username . ':' . $password ),
             ),
         ));
     
