@@ -16,8 +16,12 @@ require_once plugin_dir_path(__FILE__) . 'includes/cookie-agent-activator.php';
 require_once plugin_dir_path(__FILE__) . 'includes/cookie-agent-deactivator.php';
 require_once plugin_dir_path(__FILE__) . 'admin/cookie-agent-admin.php';
 
-register_activation_hook(__FILE__, 'includes/cookie-agent-activator.php');
-register_deactivation_hook(__FILE__, 'includes/cookie-agent-deactivator.php');
+// Usa queste righe per registrare correttamente le classi di attivazione e disattivazione
+$activator = new Cookie_Agent_Activator();
+register_activation_hook(__FILE__, array($activator, 'activate'));
+
+$deactivator = new Cookie_Agent_Deactivator();
+register_deactivation_hook(__FILE__, array($deactivator, 'deactivate'));
 
 /**
  * Inizia il plugin
