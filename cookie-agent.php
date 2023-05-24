@@ -16,8 +16,8 @@ require_once plugin_dir_path(__FILE__) . 'includes/cookie-agent-activator.php';
 require_once plugin_dir_path(__FILE__) . 'includes/cookie-agent-deactivator.php';
 require_once plugin_dir_path(__FILE__) . 'admin/cookie-agent-admin.php';
 
-register_activation_hook(__FILE__, 'cookie-agent-activator');
-register_deactivation_hook(__FILE__, 'cookie-agent-deactivator');
+register_activation_hook(__FILE__, 'includes/cookie-agent-activator.php');
+register_deactivation_hook(__FILE__, 'includes/cookie-agent-deactivator.php');
 
 /**
  * Inizia il plugin
