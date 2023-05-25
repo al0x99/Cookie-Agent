@@ -71,6 +71,8 @@ class Cookie_Agent_Admin {
         $response_data = json_decode(wp_remote_retrieve_body($response), true);
         
         $this->cookie_agent_save_data_to_database($response_data);
+
+        return '';
     }
 
     public function cookie_agent_save_data_to_database($data) {

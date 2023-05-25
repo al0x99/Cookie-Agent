@@ -27,7 +27,9 @@ class Cookie_Agent_Public {
         exit;
     }
 
-    public function run() {
-        $this->__construct();
+    function run_cookie_agent() {
+        $plugin_admin = new Cookie_Agent_Admin();
+    
+        $plugin_public = new Cookie_Agent_Public();
     }
 }

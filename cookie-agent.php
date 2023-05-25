@@ -35,10 +35,8 @@ function cookie_agent() {
 
 function run_cookie_agent() {
     $plugin_admin = new Cookie_Agent_Admin();
-    $plugin_admin->run();
 
     $plugin_public = new Cookie_Agent_Public();
-    $plugin_public->run();
 }
 
 run_cookie_agent();
