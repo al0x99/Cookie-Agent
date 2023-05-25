@@ -46,8 +46,46 @@ class Cookie_Agent_Admin {
         
         echo '<h2>' . __('Shortcode per il frontend', 'cookie-agent') . '</h2>';
         echo '<p><strong>[cookie_agent_input]</strong></p>';
-    
-        // Qui si possono aggiungere le funzioni per visualizzare i risultati delle ricerche precedenti
+
+        global $wpdb;
+        $table_name_cookies = $wpdb->prefix . 'cookies';
+        $table_name_scripts = $wpdb->prefix . 'scripts';
+
+        $cookies_data = $wpdb->get_results("SELECT * FROM $table_name_cookies");
+        $scripts_data = $wpdb->get_results("SELECT * FROM $table_name_scripts");
+
+        echo '<h2>' . __('Storico ricerche', 'cookie-agent') . '</h2>';
+
+        echo '<h3>' . __('Cookies', 'cookie-agent') . '</h3>';
+        echo '<table class="wp-list-table widefat fixed striped table-view-list">';
+        echo '<thead><tr><th>ID</th><th>Name</th><th>Value</th></tr></thead>';
+        echo '<tbody>';
+
+        foreach ($cookies_data as $cookie) {
+            echo '<tr>';
+            echo '<td>' . $cookie->id . '</td>';
+            echo '<td>' . $cookie->name . '</td>';
+            echo '<td>' . $cookie->value . '</td>';
+            echo '</tr>';
+        }
+
+        echo '</tbody>';
+        echo '</table>';
+
+        echo '<h3>' . __('Scripts', 'cookie-agent') . '</h3>';
+        echo '<table class="wp-list-table widefat fixed striped table-view-list">';
+        echo '<thead><tr><th>ID</th><th>Script-src</th></tr></thead>';
+        echo '<tbody>';
+
+        foreach ($scripts_data as $script) {
+            echo '<tr>';
+            echo '<td>' . $script->id . '</td>';
+            echo '<td>' . $script->script_src . '</td>';
+            echo '</tr>';
+        }
+
+        echo '</tbody>';
+        echo '</table>';
     }
 
     public function cookie_agent_fetch_data($url) {
@@ -107,18 +145,7 @@ class Cookie_Agent_Admin {
     }
 
 
-    public function cookie_agent_input_shortcode($atts) {
-        ob_start();
-        ?>
-        <form action="" method="post">
-            <input type="hidden" name="fetch_data" value="1">
-            <label for="url"><?php _e('Inserisci l\'URL del sito:', 'cookie-agent'); ?></label><br>
-            <input type="text" name="url" id="url" value="" size="50" required autofocus><br><br>
-            <input type="submit" name="fetch" class="button button-primary" value="<?php _e('Recupera dati', 'cookie-agent'); ?>">
-        </form>
-        <?php
-        return ob_get_clean();
-    }
+
 
     public function run() {
         $this->__construct();
