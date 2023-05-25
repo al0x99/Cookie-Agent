@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 
 require_once plugin_dir_path(__FILE__) . 'includes/cookie-agent-activator.php';
 require_once plugin_dir_path(__FILE__) . 'includes/cookie-agent-deactivator.php';
-require_once plugin_dir_path(__FILE__) . 'admin/cookie-agent-admin.php';
+require_once plugin_dir_path(__FILE__) . 'includes/cookie-agent-admin.php';
 require plugin_dir_path( __FILE__ ) . 'includes/cookie-agent-public.php';
 
 
