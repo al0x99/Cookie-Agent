@@ -43,6 +43,9 @@ class Cookie_Agent_Admin {
         echo '<input type="submit" name="fetch" class="button button-primary" value="' . __('Recupera dati', 'cookie-agent') . '">';
         echo '</form>';
         echo '</div>';
+        
+        echo '<h2>' . __('Shortcode per il frontend', 'cookie-agent') . '</h2>';
+        echo '<p><strong>[cookie_agent_input]</strong></p>';
     
         // Qui si possono aggiungere le funzioni per visualizzare i risultati delle ricerche precedenti
     }
