@@ -15,6 +15,8 @@ if (!defined('ABSPATH')) {
 require_once plugin_dir_path(__FILE__) . 'includes/cookie-agent-activator.php';
 require_once plugin_dir_path(__FILE__) . 'includes/cookie-agent-deactivator.php';
 require_once plugin_dir_path(__FILE__) . 'admin/cookie-agent-admin.php';
+require plugin_dir_path( __FILE__ ) . 'includes/cookie-agent-public.php';
+
 
 // Usa queste righe per registrare correttamente le classi di attivazione e disattivazione
 $activator = new Cookie_Agent_Activator();
@@ -30,5 +32,16 @@ function cookie_agent() {
     $plugin_admin = new Cookie_Agent_Admin();
     $plugin_admin->run();
 }
+
+function run_cookie_agent() {
+    $plugin_admin = new Cookie_Agent_Admin();
+    $plugin_admin->run();
+
+    $plugin_public = new Cookie_Agent_Public();
+    $plugin_public->run();
+}
+
+run_cookie_agent();
+
 
 cookie_agent();
