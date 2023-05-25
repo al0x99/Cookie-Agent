@@ -13,7 +13,7 @@ class Cookie_Agent_Public {
         if (!isset($_POST['fetch_data'], $_POST['url'])) {
             return;
         }
-        require_once plugin_dir_path( __FILE__ ) . 'admin/cookie-agent-admin.php';
+        require_once plugin_dir_path( __FILE__ ) . '..admin/cookie-agent-admin.php';
         $admin = new Cookie_Agent_Admin();
 
         $result = $admin->cookie_agent_fetch_data($_POST['url']);
