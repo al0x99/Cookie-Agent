@@ -27,6 +27,20 @@ class Cookie_Agent_Public {
         exit;
     }
 
+
+    public function cookie_agent_input_shortcode($atts) {
+        ob_start();
+        ?>
+        <form action="" method="post">
+            <input type="hidden" name="fetch_data" value="1">
+            <label for="url"><?php _e('Inserisci l\'URL del sito:', 'cookie-agent'); ?></label><br>
+            <input type="text" name="url" id="url" value="" size="50" required autofocus><br><br>
+            <input type="submit" name="fetch" class="button button-primary" value="<?php _e('Recupera dati', 'cookie-agent'); ?>">
+        </form>
+        <?php
+        return ob_get_clean();
+    }
+
     function run_cookie_agent() {
         $plugin_admin = new Cookie_Agent_Admin();
     
