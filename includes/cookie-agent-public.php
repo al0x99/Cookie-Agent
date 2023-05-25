@@ -13,18 +13,18 @@ class Cookie_Agent_Public {
         if (!isset($_POST['fetch_data'], $_POST['url'])) {
             return;
         }
-
-        // Qui dovrai creare un'istanza di Cookie_Agent_Admin per chiamare la funzione cookie_agent_fetch_data().
-        // Assicurati di includere il file cookie-agent-admin.php per poterlo fare.
-        require_once plugin_dir_path( __FILE__ ) . 'cookie-agent-admin.php';
+        require_once plugin_dir_path( __FILE__ ) . 'admin/cookie-agent-admin.php';
         $admin = new Cookie_Agent_Admin();
 
         $result = $admin->cookie_agent_fetch_data($_POST['url']);
         if (!empty($result)) {
-            // Gestisci l'errore.
+            $_SESSION['cookie_agent_error'] = $result;
         } else {
-            // Gestisci il successo.
+            $_SESSION['cookie_agent_success'] = __('Dati salvati correttamente nel database.', 'cookie-agent');
         }
+    
+        wp_redirect(wp_get_referer());
+        exit;
     }
 
     public function run() {
